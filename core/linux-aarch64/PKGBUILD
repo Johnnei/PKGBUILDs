@@ -20,6 +20,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         '0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch'
         '0003-arm64-dts-rockchip-add-usb3-controller-node-for-RK33.patch'
         '0004-arm64-dts-rockchip-enable-usb3-nodes-on-rk3328-rock6.patch'
+        '0005-overlayfs-regression-5.10.patch'
         'config'
         'kernel.its'
         'kernel.keyblock'
@@ -33,6 +34,7 @@ md5sums=('753adc474bf799d569dec4f165ed92c3'
          '9834da938723cde2f09b80ee9c2db88d'
          'a29581bb41d263dd1fce4b98b7ac77b2'
          '78b533d939dd429057d3388e6d49c627'
+         'e9726bcdf7b688ea6257c846e8f9ccfb'
          'f39e3a4e6e7ee88b79621e9711459bbb'
          '7f1a96e24f5150f790df94398e9525a3'
          '61c5ff73c136ed07a7aadbf58db3d96a'
@@ -52,6 +54,7 @@ prepare() {
   git apply ../0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
   git apply ../0003-arm64-dts-rockchip-add-usb3-controller-node-for-RK33.patch
   git apply ../0004-arm64-dts-rockchip-enable-usb3-nodes-on-rk3328-rock6.patch
+  git apply ../0005-overlayfs-regression-5.10.patch
 
   cat "${srcdir}/config" > ./.config
 
