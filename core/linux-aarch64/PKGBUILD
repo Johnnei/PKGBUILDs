@@ -7,6 +7,7 @@ pkgbase=linux-aarch64
 _srcname=linux-5.10
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
+_applydir="core/linux-aarch64/src/${_srcname}"
 pkgver=5.10.16
 pkgrel=1.1
 arch=('aarch64')
@@ -47,14 +48,14 @@ prepare() {
   cd ${_srcname}
 
   # add upstream patch
-  git apply --whitespace=nowarn ../patch-${pkgver}
+  git apply --verbose --directory=${_applydir} --whitespace=nowarn ../patch-${pkgver}
 
   # ALARM patches
-  git apply ../0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
-  git apply ../0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
-  git apply ../0003-arm64-dts-rockchip-add-usb3-controller-node-for-RK33.patch
-  git apply ../0004-arm64-dts-rockchip-enable-usb3-nodes-on-rk3328-rock6.patch
-  git apply ../0005-overlayfs-regression-5.10.patch
+  git apply --verbose --directory=${_applydir} ../0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
+  git apply --verbose --directory=${_applydir} ../0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
+  git apply --verbose --directory=${_applydir} ../0003-arm64-dts-rockchip-add-usb3-controller-node-for-RK33.patch
+  git apply --verbose --directory=${_applydir} ../0004-arm64-dts-rockchip-enable-usb3-nodes-on-rk3328-rock6.patch
+  git apply --verbose --directory=${_applydir} ../0005-overlayfs-regression-5.10.patch
 
   cat "${srcdir}/config" > ./.config
 
